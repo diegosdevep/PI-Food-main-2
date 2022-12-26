@@ -7,9 +7,7 @@ const getApiInfo = async () => {
     // const url = await axios.get('https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5');
     const url = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
-      {
-        headers: { 'Accept-Encoding': 'null' },
-      }
+      { headers: { 'Accept-Encoding': 'null' } }
     );
     const result = await url.data.results.map((e) => {
       return {

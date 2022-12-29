@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         unique: true,
         validate: {
           len: [4, 20],
-          notNull: 'Please enter a name',
+          notNull: 'This name already exist now',
         },
       },
       summary: {

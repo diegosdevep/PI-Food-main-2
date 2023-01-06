@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const recipes = await getRecipes(name);
     res.status(200).send(recipes);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ msg: 'Error fallo en encontrar la receta', error });
   }
 });
 

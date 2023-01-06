@@ -1,0 +1,18 @@
+.backgroundGeneral {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://cdn.pixabay.com/photo/2017/04/05/01/14/food-2203697_960_720.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  isolation: isolate;
+  z-index: 2;
+}
+.backgroundGeneral::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgb(9, 9, 9);
+  opacity: 0.3;
+}

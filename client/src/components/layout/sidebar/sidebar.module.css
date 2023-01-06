@@ -1,0 +1,36 @@
+.container {
+  width: 22%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  font-family: Poppins;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 3;
+}
+.firstFilterContainer {
+  padding-top: 120px;
+}
+.titleFilter {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+.ulContainer {
+  color: #fff;
+  font-size: 16px;
+  margin: 5px 30px 20px 30px;
+  text-transform: capitalize;
+}
+.containerCheckbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  margin: 8px 0 5px 20px;
+}
+
+/* rgba(143, 227, 7, 0.7) */

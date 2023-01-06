@@ -1,0 +1,21 @@
+.btn {
+  width: 22%;
+  height: 44px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  font-size: Inter;
+  font-weight: 500;
+  color: #fff;
+  border: 2px solid rgba(143, 227, 7, 0.7);
+  border-radius: 5px;
+  border-top: 2px solid rgba(143, 227, 7, 0.7);
+  border-bottom: 2px solid rgba(143, 227, 7, 0.7);
+}
+.btn:hover {
+  cursor: pointer;
+  background: rgba(143, 227, 7, 0.9);
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}

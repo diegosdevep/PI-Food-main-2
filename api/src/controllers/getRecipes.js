@@ -22,7 +22,11 @@ const getRecipes = async (name) => {
       });
       return recipes;
     }
-    return 'Esta receta no existe.';
+    if (!recipes.length) {
+      return res
+        .status(404)
+        .json({ error: 'No se han encontrado recetas con ese nombre' });
+    }
   } else {
     // Si no tengo nombre, devuelvo todas las recetas.
     let recipes = AllRecipes.map((r) => {

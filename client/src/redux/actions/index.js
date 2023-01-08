@@ -3,6 +3,8 @@ export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 export const GET_RECIPE_BY_ID = 'GET_RECIPES_BY_ID';
 export const GET_DIETS = 'GET_DIETS';
+export const FILTER_BY_DIET = 'FILTER_BY_DIET';
+export const FILTER_AZ = 'FILTER_AZ';
 
 export function getRecipes() {
   return function (dispatch) {
@@ -49,5 +51,19 @@ export function getDiets() {
     axios.get(`http://localhost:3001/types`).then((response) => {
       dispatch({ type: GET_DIETS, payload: response.data });
     });
+  };
+}
+
+export function filterByDiet(payload) {
+  return {
+    type: FILTER_BY_DIET,
+    payload,
+  };
+}
+
+export function filterAZ(payload) {
+  return {
+    type: FILTER_AZ,
+    payload,
   };
 }

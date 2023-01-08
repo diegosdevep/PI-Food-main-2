@@ -3,12 +3,12 @@ import NavBar from './navbar/NavBar';
 import Sidebar from './sidebar/Sidebar';
 import styles from './layout.module.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, setPage }) => {
   return (
     <>
       <NavBar />
       <div className={styles.flex}>
-        <Sidebar />
+        <Sidebar setPage={setPage} />
         {children}
       </div>
     </>

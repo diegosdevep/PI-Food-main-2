@@ -1,27 +1,34 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Layout from '../../components/layout/Layout';
+import { useParams } from 'react-router-dom';
 import styles from './details.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeById } from '../../redux/actions/index';
-import NavBar from '../../components/layout/navbar/NavBar';
+import Score from '../../components/details/Score';
+import Summary from '../../components/details/Summary';
+import NotFound from '../../components/details/NotFound';
+import Steps from '../../components/details/Steps';
+import Logo from '../../components/layout/logo/Logo';
 
 const Details = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   let recipe = useSelector((state) => state.recipeById);
-  console.log(recipe);
+
   useEffect(() => {
     dispatch(getRecipeById(id));
   }, [dispatch, id]);
 
   return (
     <>
-      <NavBar />
+      <div className={styles.logo}>
+        <div style={{ textAlign: 'center', width: '100%' }}>
+          <Logo />
+        </div>
+      </div>
       <div className={styles.backgroundGeneral}>
         <div className={styles.container}>
           <div className={styles.flex}>
-            <img className={styles.img} src={recipe.image} />
+            <img className={styles.img} src={recipe.image} alt='recipe' />
 
             <div>
               <div className={styles.box}>
@@ -30,57 +37,63 @@ const Details = () => {
               <div className={styles.box}>
                 <h4>Diets: </h4>
                 <div className={styles.dietsContainer}>
-                  {recipe.diets?.map((d) => {
-                    if (d.hasOwnProperty('name')) {
+                  {recipe.diets?.map((diet) => {
+                    if (diet.hasOwnProperty('name')) {
                       return (
-                        <div className={styles.diets} key={d.name}>
-                          <p>{d.name[0].toUpperCase() + d.name.slice(1)} </p>
+                        <div className={styles.diets} key={diet.name}>
+                          <p>
+                            {diet.name[0].toUpperCase() + diet.name.slice(1)}{' '}
+                          </p>
                         </div>
                       );
                     } else {
                       return (
-                        <div className={styles.diets} key={d}>
-                          <p>{d[0].toUpperCase() + d.slice(1)} </p>
+                        <div className={styles.diets} key={diet}>
+                          <p>{diet[0].toUpperCase() + diet.slice(1)} </p>
                         </div>
                       );
                     }
                   })}
                 </div>
               </div>
-              <div className={styles.box}>
-                <h4>Health Score (0 - 100):</h4>
-                <p className={styles.score}>{recipe.healthScore}</p>
-              </div>
+              {/* Score */}
+              <Score healthScore={recipe.healthScore} />
             </div>
           </div>
 
           <div>
             <div className={styles.box}>
-              <h4 className={styles.titleBig}>Summary</h4>
-              <p>{recipe.summary}</p>
+              {/* RESUME */}
+              {recipe.summary ? (
+                <Summary summary={recipe.summary?.replace(/<[^>]*>/g, '')} />
+              ) : (
+                <NotFound>'This recipe does not have summary.'</NotFound>
+              )}
             </div>
-            {recipe.steps ? (
-              <div className={styles.box}>
-                <h3 className={styles.titleBig}>Steps: </h3>
-                <ul>
+
+            {/* STEP BY STEP */}
+            <div className={styles.box}>
+              {recipe.steps ? (
+                <div>
+                  <h3 className={styles.title}>Steps: </h3>
                   {Array.isArray(recipe.steps) ? (
-                    recipe.steps.map((s) => {
+                    recipe.steps.map((step) => {
                       return (
-                        <p key={s.number}>
-                          {s.number}: {s.step}
-                        </p>
+                        <Steps
+                          key={step.number}
+                          number={step.number}
+                          step={step.step}
+                        />
                       );
                     })
                   ) : (
-                    <p>{recipe.steps}</p>
+                    <p className={styles.text}>{recipe.steps}</p>
                   )}{' '}
-                </ul>
-              </div>
-            ) : (
-              <h5 className={styles.notFound}>
-                This recipe does not have step by step
-              </h5>
-            )}
+                </div>
+              ) : (
+                <NotFound>This recipe does not have step by step</NotFound>
+              )}
+            </div>
           </div>
         </div>
       </div>

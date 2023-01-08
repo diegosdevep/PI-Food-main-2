@@ -1,0 +1,42 @@
+.container {
+  width: 90%;
+  float: right;
+  position: relative;
+  z-index: 4;
+  margin-right: 40px;
+}
+
+.ulist {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 102px;
+}
+
+.activeLink {
+  background-color: rgba(143, 227, 7, 1);
+  color: #000;
+  border: none;
+  padding: 7px 20px;
+  border-radius: 3px;
+  margin: 0 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.btn {
+  background: rgba(143, 227, 7, 0.6);
+  border: none;
+  padding: 7px 20px;
+  border-radius: 3px;
+  margin: 0 5px;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: rgba(143, 227, 7, 1);
+  color: #000;
+}

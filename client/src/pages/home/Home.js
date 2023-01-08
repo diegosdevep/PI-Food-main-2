@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipes } from '../../redux/actions/index';
-import { Link } from 'react-router-dom';
 import styles from './home.module.css';
 import Layout from '../../components/layout/Layout';
 import Card from '../../components/card/Card';
+import Paginated from '../../components/paginated/Paginated';
 
 const Home = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [cardPerPages] = useState(9);
+
+  // PAGINADO
+  const lastCard = page * cardPerPages;
+  const firstCard = lastCard - cardPerPages;
+  const cardsCurrent = allRecipes.slice(firstCard, lastCard);
+
+  const pages = (pageNumber) => {
+    setPage(pageNumber);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -18,14 +29,21 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <Layout>
+    <Layout setPage={setPage}>
       <div className={styles.backgroundGeneral}>
         <div className={styles.flex}>
+          <Paginated
+            cardPerPages={cardPerPages}
+            allRecipes={allRecipes.length}
+            pages={pages}
+            page={page}
+            setPage={setPage}
+          />
           {loading ? (
             <p>loading</p>
           ) : (
             <div className={styles.container}>
-              {allRecipes.slice(0, 9)?.map((receta) => (
+              {cardsCurrent?.map((receta) => (
                 <Card
                   key={receta.id}
                   id={receta.id}

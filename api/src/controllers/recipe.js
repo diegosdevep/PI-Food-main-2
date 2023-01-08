@@ -28,7 +28,6 @@ const get_ApiID = async (id) => {
     dish: detail.dishTypes,
     diets: detail.diets,
   };
-  console.log(recipeDetail);
   return recipeDetail;
 };
 
@@ -45,16 +44,15 @@ const get_DataBaseID = async (id) => {
 };
 
 const get_Api = async () => {
-  // const resApi = await axios.get(
-  //   'https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5'
-  // );
-  // d772524c735a4997b9b236943c32ff56
-  const resApi = await axios
-    .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`,
-      { headers: { 'Accept-Encoding': 'gzip,deflate,compress' } }
-    )
-    .catch((error) => console.log(error));
+  const resApi = await axios.get(
+    'https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5'
+  );
+  // const resApi = await axios
+  //   .get(
+  //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`,
+  //     { headers: { 'Accept-Encoding': 'gzip,deflate,compress' } }
+  //   )
+  //   .catch((error) => console.log(error));
 
   const { results } = resApi.data;
 

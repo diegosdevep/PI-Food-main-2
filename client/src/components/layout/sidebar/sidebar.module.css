@@ -17,12 +17,25 @@
   font-weight: 500;
   color: #fff;
 }
-.ulContainer {
+.select {
+  background: transparent;
   color: #fff;
-  font-size: 16px;
-  margin: 5px 30px 20px 30px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  outline: none;
   text-transform: capitalize;
 }
+.select:hover {
+  cursor: pointer;
+}
+.select option {
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 .containerCheckbox {
   display: flex;
   flex-direction: row;

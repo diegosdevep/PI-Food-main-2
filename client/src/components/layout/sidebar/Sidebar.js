@@ -1,13 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './sidebar.module.css';
-import { getDiets } from '../../../redux/actions/index';
+import { filterAZ, filterByDiet, getDiets } from '../../../redux/actions/index';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../shared/buttons/Button';
-import { filtros } from '../../../helpers/filtros';
 
-const Sidebar = () => {
+const Sidebar = ({ setPage }) => {
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.diets);
+  const [order, setOrder] = useState('');
+
+  function handleFilterDiets(e) {
+    dispatch(filterByDiet(e.target.value));
+    setPage(1);
+  }
+
+  function handleFilterAZ(e) {
+    e.preventDefault();
+    dispatch(filterAZ(e.target.value));
+    setOrder(e.target.value);
+    setPage(2);
+    setTimeout(() => {
+      setPage(1);
+    }, 10);
+  }
 
   useEffect(() => {
     dispatch(getDiets());
@@ -19,31 +34,31 @@ const Sidebar = () => {
         <div className={styles.firstFilterContainer}>
           <h3 className={styles.titleFilter}>Filtros</h3>
           <div className={styles.border}></div>
-          <form>
-            {filtros.map((filtro) => (
-              <div className={styles.containerCheckbox} key={filtro.id}>
-                <input type='radio' value={filtro.name} />
-                <label style={{ color: 'rgba(255,255,255, 0.90)' }}>
-                  {filtro.name}
-                </label>
-              </div>
-            ))}
-          </form>
+          <select
+            defaultValue={order}
+            className={styles.select}
+            onChange={(e) => handleFilterAZ(e)}
+          >
+            <option value=''>Order alphabetically</option>
+            <option value='az'>A - Z</option>
+            <option value='za'>Z - A</option>
+          </select>
         </div>
 
         <div>
           <h3 className={styles.titleFilter}>Filtro por Dieta</h3>
           {allDiets ? (
-            <form style={{ marginBottom: 15, textTransform: 'capitalize' }}>
+            <select
+              onChange={(e) => handleFilterDiets(e)}
+              className={styles.select}
+            >
+              <option value='all'>All</option>
               {allDiets.map((diet) => (
-                <div key={diet.id} className={styles.containerCheckbox}>
-                  <input type='radio' key={diet.id} value={diet.name} />
-                  <label style={{ color: 'rgba(255,255,255, 0.90)' }}>
-                    {diet.name}
-                  </label>
-                </div>
+                <option key={diet.id} value={diet.name}>
+                  {diet.name}
+                </option>
               ))}
-            </form>
+            </select>
           ) : (
             <p>loading</p>
           )}

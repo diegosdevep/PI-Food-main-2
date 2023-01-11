@@ -1,16 +1,21 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import styles from './create.module.css';
-import Layout from '../../components/layout/Layout';
 import Form from '../../components/shared/form/Form';
+import Logo from '../../components/layout/logo/Logo';
 
 const CreateRecipe = () => {
   return (
-    <Layout>
+    <>
+      <div className={styles.logo}>
+        <div style={{ textAlign: 'center', width: '100%' }}>
+          <Logo title='CREAR RECETA' />
+        </div>
+      </div>
       <div className={styles.backgroundGeneral}>
         <Form />
       </div>
-    </Layout>
+    </>
   );
 };
 

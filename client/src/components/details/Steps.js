@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from '../../pages/details/details.module.css';
 
-const Steps = ({ key, step, number }) => {
+const Steps = ({ step, number }) => {
   return (
-    <p className={styles.text} key={key}>
+    <p className={styles.text}>
       {number}- {step}
     </p>
   );

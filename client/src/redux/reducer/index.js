@@ -3,8 +3,10 @@ import {
   GET_RECIPES_BY_NAME,
   GET_RECIPE_BY_ID,
   GET_DIETS,
+  CREATE_RECIPE,
   FILTER_BY_DIET,
   FILTER_AZ,
+  FILTER_HEALTH_SCORE,
 } from '../actions';
 
 const initialState = {
@@ -37,6 +39,9 @@ export default function reducer(state = initialState, action) {
         ...state,
         diets: action.payload,
       };
+    case CREATE_RECIPE:
+      return { ...state };
+
     case FILTER_BY_DIET:
       const recipes = state.allRecipes;
       const filterDiet =
@@ -56,13 +61,13 @@ export default function reducer(state = initialState, action) {
     case FILTER_AZ:
       let sortAZ =
         action.payload === 'az'
-          ? state.allRecipes.sort(function (a, b) {
+          ? state.allRecipes.sort((a, b) => {
               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
               if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
               return 0;
             })
           : action.payload === 'za'
-          ? state.allRecipes.sort(function (a, b) {
+          ? state.allRecipes.sort((a, b) => {
               if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
               if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
               return 0;
@@ -71,6 +76,26 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         allRecipes: sortAZ,
+      };
+
+    case FILTER_HEALTH_SCORE:
+      let sortScore =
+        action.payload === 'min'
+          ? state.allRecipes.sort((a, b) => {
+              if (a.healthScore > b.healthScore) return 1;
+              if (a.healthScore < b.healthScore) return -1;
+              return 0;
+            })
+          : action.payload === 'max'
+          ? state.allRecipes.sort((a, b) => {
+              if (a.healthScore < b.healthScore) return 1;
+              if (a.healthScore > b.healthScore) return -1;
+              return 0;
+            })
+          : state.allRecipes;
+      return {
+        ...state,
+        allRecipes: sortScore,
       };
     default:
       return state;

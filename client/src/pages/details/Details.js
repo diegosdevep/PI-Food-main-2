@@ -22,18 +22,18 @@ const Details = () => {
     <>
       <div className={styles.logo}>
         <div style={{ textAlign: 'center', width: '100%' }}>
-          <Logo />
+          <Logo title='FOOD DETAILS' />
         </div>
       </div>
       <div className={styles.backgroundGeneral}>
         <div className={styles.container}>
           <div className={styles.flex}>
             <img className={styles.img} src={recipe.image} alt='recipe' />
-
             <div>
               <div className={styles.box}>
                 <h4 className={styles.title}>{recipe.name}</h4>
               </div>
+
               <div className={styles.box}>
                 <h4>Diets: </h4>
                 <div className={styles.dietsContainer}>
@@ -56,13 +56,12 @@ const Details = () => {
                   })}
                 </div>
               </div>
-              {/* Score */}
               <Score healthScore={recipe.healthScore} />
             </div>
           </div>
 
-          <div>
-            <div className={styles.box}>
+          <div className={styles.information}>
+            <div>
               {/* RESUME */}
               {recipe.summary ? (
                 <Summary summary={recipe.summary?.replace(/<[^>]*>/g, '')} />
@@ -72,7 +71,7 @@ const Details = () => {
             </div>
 
             {/* STEP BY STEP */}
-            <div className={styles.box}>
+            <div>
               {recipe.steps ? (
                 <div>
                   <h3 className={styles.title}>Steps: </h3>
@@ -80,7 +79,7 @@ const Details = () => {
                     recipe.steps.map((step) => {
                       return (
                         <Steps
-                          key={step.number}
+                          key={step.step}
                           number={step.number}
                           step={step.step}
                         />

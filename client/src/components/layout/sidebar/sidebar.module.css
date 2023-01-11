@@ -9,20 +9,29 @@
   position: fixed;
   z-index: 3;
 }
+.center {
+  width: 100%;
+  margin: 0 auto;
+}
 .firstFilterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding-top: 120px;
+  padding-left: 20px;
 }
 .titleFilter {
   font-size: 20px;
   font-weight: 500;
   color: #fff;
+  margin-bottom: 10px;
 }
 .select {
+  width: 90%;
   background: transparent;
   color: #fff;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 15px;
   outline: none;
   text-transform: capitalize;
 }
@@ -36,14 +45,24 @@
   cursor: pointer;
 }
 
-.containerCheckbox {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  margin: 8px 0 5px 20px;
+.refresh {
+  width: 50%;
+  padding: 10px;
+  font-family: Inter;
+  margin: auto;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border: 2px solid rgba(143, 227, 7, 0.7);
+  border-radius: 5px;
+  border-top: 2px solid rgba(143, 227, 7, 0.7);
+  border-bottom: 2px solid rgba(143, 227, 7, 0.7);
+}
+.refresh:hover {
+  background-color: rgba(143, 227, 7, 0.9);
+  color: #000;
+  border: none;
 }
 
 /* rgba(143, 227, 7, 0.7) */

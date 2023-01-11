@@ -5,6 +5,8 @@ export const GET_RECIPE_BY_ID = 'GET_RECIPES_BY_ID';
 export const GET_DIETS = 'GET_DIETS';
 export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const FILTER_AZ = 'FILTER_AZ';
+export const FILTER_HEALTH_SCORE = 'FILTER_HEALTH_SCORE';
+export const CREATE_RECIPE = 'CREATE_RECIPE';
 
 export function getRecipes() {
   return function (dispatch) {
@@ -61,9 +63,22 @@ export function filterByDiet(payload) {
   };
 }
 
+export function createRecipe(payload) {
+  return (dispatch) => {
+    axios.post(`http://localhost:3001/recipe`, payload);
+    dispatch({ type: CREATE_RECIPE, payload });
+  };
+}
+
 export function filterAZ(payload) {
   return {
     type: FILTER_AZ,
+    payload,
+  };
+}
+export function filterHealthScore(payload) {
+  return {
+    type: FILTER_HEALTH_SCORE,
     payload,
   };
 }

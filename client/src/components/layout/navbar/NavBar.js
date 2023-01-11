@@ -6,7 +6,7 @@ import styles from './navbar.module.css';
 const NavBar = () => {
   return (
     <nav className={styles.container}>
-      <Logo />
+      <Logo title='HENRY FOOD' />
       <Search />
     </nav>
   );

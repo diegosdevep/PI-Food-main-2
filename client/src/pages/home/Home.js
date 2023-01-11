@@ -49,6 +49,7 @@ const Home = () => {
                   id={receta.id}
                   name={receta.name}
                   imagen={receta.image}
+                  healthScore={receta.healthScore}
                 />
               ))}
             </div>

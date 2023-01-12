@@ -2,7 +2,7 @@ import Start from './pages/start/Start';
 import Home from './pages/home/Home';
 import Details from './pages/details/Details';
 import CreateRecipe from './pages/create/CreateRecipe';
-import Page404 from './pages/Page404';
+import Page404 from './pages/page404/Page404';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes } from '../../redux/actions/index';
+import { getRecipes, loadingGeneral } from '../../redux/actions/index';
 import styles from './home.module.css';
 import Layout from '../../components/layout/Layout';
 import Card from '../../components/card/Card';
 import Paginated from '../../components/paginated/Paginated';
+import Loading from '../../components/shared/loading/Loading';
 
 const Home = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector((state) => state.loading);
   const [page, setPage] = useState(1);
   const [cardPerPages] = useState(9);
 
@@ -23,9 +24,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     dispatch(getRecipes());
-    setLoading(false);
+    setTimeout(() => {
+      dispatch(loadingGeneral(false));
+    }, 1500);
   }, [dispatch]);
 
   return (
@@ -40,16 +42,16 @@ const Home = () => {
             setPage={setPage}
           />
           {loading ? (
-            <p>loading</p>
+            <Loading />
           ) : (
             <div className={styles.container}>
-              {cardsCurrent?.map((receta) => (
+              {cardsCurrent?.map((recipe) => (
                 <Card
-                  key={receta.id}
-                  id={receta.id}
-                  name={receta.name}
-                  imagen={receta.image}
-                  healthScore={receta.healthScore}
+                  key={recipe.id}
+                  id={recipe.id}
+                  name={recipe.name}
+                  imagen={recipe.image}
+                  healthScore={recipe.healthScore}
                 />
               ))}
             </div>

@@ -1,7 +1,15 @@
 import React from 'react';
 import styles from './input.module.css';
 
-const Input = ({ placeholder, value, type, onChange, name }) => {
+const Input = ({
+  placeholder,
+  value,
+  type,
+  onChange,
+  name,
+  min = '0',
+  max = '100',
+}) => {
   return (
     <div>
       <input
@@ -11,6 +19,8 @@ const Input = ({ placeholder, value, type, onChange, name }) => {
         className={styles.input}
         onChange={onChange}
         name={name}
+        min={min}
+        max={max}
       />
     </div>
   );

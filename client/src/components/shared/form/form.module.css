@@ -23,12 +23,26 @@
 }
 
 .row {
+  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+}
+.row input {
+  width: 140px;
+  height: 46px;
+  background: transparent;
+  border: 1.5px solid rgba(143, 227, 7, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  margin: 5px 0 15px 0;
 }
 
 .label {
@@ -88,4 +102,47 @@
   color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
   border: 2px solid rgba(143, 227, 7, 1);
+}
+
+.error {
+  position: relative;
+  z-index: 4;
+  color: red;
+  font-family: Inter;
+  font-size: 14px;
+  /* background-color: aliceblue; */
+}
+
+.backgroundGeneral {
+  width: 100%;
+  min-height: 40vh;
+  background-image: url('https://cdn.pixabay.com/photo/2017/04/05/01/14/food-2203697_960_720.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  isolation: isolate;
+  z-index: 2;
+}
+.backgroundGeneral::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgb(9, 9, 9);
+  opacity: 0.3;
+}
+.loading {
+  width: 90%;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: 40px auto auto auto;
+  background: rgb(9, 9, 9, 0.7);
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
 }

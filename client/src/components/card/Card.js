@@ -9,7 +9,7 @@ const Card = ({ id, name, imagen, healthScore }) => {
       <h4 className={styles.title}>{name}</h4>
       <p className={styles.text}>Healthy: {healthScore}</p>
       <Link to={`/details/${id}`} className={styles.btnDetail}>
-        <button className={styles.btn}>Detalles</button>
+        <button className={styles.btn}>Details</button>
       </Link>
     </div>
   );

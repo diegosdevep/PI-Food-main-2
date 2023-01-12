@@ -7,6 +7,7 @@ export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const FILTER_AZ = 'FILTER_AZ';
 export const FILTER_HEALTH_SCORE = 'FILTER_HEALTH_SCORE';
 export const CREATE_RECIPE = 'CREATE_RECIPE';
+export const LOADING_GENERAL = 'LOADING_GENERAL';
 
 export function getRecipes() {
   return function (dispatch) {
@@ -80,5 +81,11 @@ export function filterHealthScore(payload) {
   return {
     type: FILTER_HEALTH_SCORE,
     payload,
+  };
+}
+
+export function loadingGeneral(e) {
+  return (dispatch) => {
+    dispatch({ type: LOADING_GENERAL, payload: e });
   };
 }

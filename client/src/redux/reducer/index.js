@@ -7,6 +7,7 @@ import {
   FILTER_BY_DIET,
   FILTER_AZ,
   FILTER_HEALTH_SCORE,
+  LOADING_GENERAL,
 } from '../actions';
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   allRecipes: [],
   recipeById: {},
   diets: [],
+  loading: true,
 };
 
 export default function reducer(state = initialState, action) {
@@ -42,6 +44,11 @@ export default function reducer(state = initialState, action) {
     case CREATE_RECIPE:
       return { ...state };
 
+    case LOADING_GENERAL:
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case FILTER_BY_DIET:
       const recipes = state.allRecipes;
       const filterDiet =

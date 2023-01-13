@@ -24,10 +24,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getRecipes());
     setTimeout(() => {
+      dispatch(getRecipes());
       dispatch(loadingGeneral(false));
-    }, 1500);
+    }, 1000);
   }, [dispatch]);
 
   return (

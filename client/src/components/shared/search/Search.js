@@ -14,8 +14,10 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getRecipesByName(search));
-    setSearch('');
+    if (search !== '') {
+      dispatch(getRecipesByName(search));
+      setSearch('');
+    }
   };
 
   return (
@@ -28,7 +30,7 @@ const Search = () => {
         onChange={handleChange}
       />
       <button className={styles.btn} onClick={(e) => handleSubmit(e)}>
-        Buscar
+        Search
       </button>
     </div>
   );

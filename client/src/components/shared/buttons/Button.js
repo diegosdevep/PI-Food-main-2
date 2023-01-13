@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Button = ({ title }) => {
   return (
     <Link to='/create'>
-      <button className={styles.btn}>{title}</button>;
+      <button className={styles.btn}>{title}</button>
     </Link>
   );
 };

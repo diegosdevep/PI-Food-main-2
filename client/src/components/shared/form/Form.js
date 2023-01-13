@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { validate } from '../../../helpers/validate';
 import { initialState } from '../../../helpers/initialState';
 import Loading from '../loading/Loading';
+import Modal from '../modal/Modal';
 
 const Form = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
   const [create, setCreate] = useState(initialState);
   const [errors, setErrors] = useState({});
+  const [modal, setModal] = useState(false);
 
   function handleChange(e) {
     e.preventDefault();
@@ -43,21 +45,36 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      dispatch(createRecipe(create));
-      setCreate({
-        name: '',
-        summary: '',
-        score: '',
-        healthScore: '',
-        image: '',
-        steps: '',
-        diets: [],
-      });
-      setLoading(false);
-      navigate('/home');
-    }, 1500);
+    if (
+      create.name === '' ||
+      create.summary === '' ||
+      create.score === '' ||
+      create.healthScore === '' ||
+      create.image === '' ||
+      create.steps === ''
+    ) {
+      setModal(true);
+    } else {
+      setLoading(true);
+      setTimeout(() => {
+        dispatch(createRecipe(create));
+        setCreate({
+          name: '',
+          summary: '',
+          score: '',
+          healthScore: '',
+          image: '',
+          steps: '',
+          diets: [],
+        });
+        setLoading(false);
+        navigate('/home');
+      }, 1000);
+    }
+  };
+
+  const onClose = () => {
+    setModal(false);
   };
 
   useEffect(() => {
@@ -74,6 +91,8 @@ const Form = () => {
         </div>
       ) : (
         <form className={styles.formContainer} onSubmit={handleSubmit}>
+          {modal ? <Modal onClose={onClose} /> : ''}
+
           <div className={styles.form}>
             <div>
               <label className={styles.label}>Title</label>

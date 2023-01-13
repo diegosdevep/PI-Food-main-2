@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './details.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeById, loadingGeneral } from '../../redux/actions/index';
+import { getRecipeById } from '../../redux/actions/index';
 import Score from '../../components/details/Score';
 import Summary from '../../components/details/Summary';
 import NotFound from '../../components/details/NotFound';
@@ -12,7 +12,6 @@ import Loading from '../../components/shared/loading/Loading';
 
 const Details = () => {
   const dispatch = useDispatch();
-  // const loading = useSelector((state) => state.loading);
   const [loading, setLoading] = useState(true);
   let recipe = useSelector((state) => state.recipeById);
   const { id } = useParams();

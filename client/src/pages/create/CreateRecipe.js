@@ -9,7 +9,7 @@ const CreateRecipe = () => {
     <>
       <div className={styles.logo}>
         <div style={{ textAlign: 'center', width: '100%' }}>
-          <Logo title='CREAR RECETA' />
+          <Logo title='CREATE RECIPE' />
         </div>
       </div>
       <div className={styles.backgroundGeneral}>

@@ -57,7 +57,7 @@ const Sidebar = ({ setPage }) => {
       <div className={styles.center}>
         <div className={styles.firstFilterContainer}>
           <div>
-            <h3 className={styles.titleFilter}>Filtros</h3>
+            <h3 className={styles.titleFilter}>Filters</h3>
             <select
               defaultValue={order}
               className={styles.select}
@@ -83,7 +83,7 @@ const Sidebar = ({ setPage }) => {
           </div>
 
           <div>
-            <h3 className={styles.titleFilter}>Filtro por Dieta</h3>
+            <h3 className={styles.titleFilter}>Filters by Diets</h3>
             {allDiets ? (
               <select
                 onChange={(e) => handleFilterDiets(e)}
@@ -106,7 +106,7 @@ const Sidebar = ({ setPage }) => {
         </div>
       </div>
       <div>
-        <Button title='Crear Receta' />
+        <Button title='Create Recipe' />
       </div>
     </div>
   );

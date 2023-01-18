@@ -4,6 +4,8 @@ import Details from './pages/details/Details';
 import CreateRecipe from './pages/create/CreateRecipe';
 import Page404 from './pages/page404/Page404';
 import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   return (

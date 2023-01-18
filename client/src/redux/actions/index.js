@@ -12,7 +12,7 @@ export const LOADING_GENERAL = 'LOADING_GENERAL';
 export function getRecipes() {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/recipes`)
+      .get(`/recipes`)
       .then((response) => {
         return dispatch({ type: GET_RECIPES, payload: response.data });
       })
@@ -25,7 +25,7 @@ export function getRecipes() {
 export function getRecipesByName(name) {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/recipes?name=${name}`)
+      .get(`/recipes?name=${name}`)
       .then((response) => {
         dispatch({
           type: GET_RECIPES_BY_NAME,
@@ -40,7 +40,7 @@ export function getRecipesByName(name) {
 
 export function getRecipeById(id) {
   return (dispatch) => {
-    axios.get(`http://localhost:3001/recipes/${id}`).then((response) => {
+    axios.get(`/recipes/${id}`).then((response) => {
       dispatch({
         type: GET_RECIPE_BY_ID,
         payload: response.data,
@@ -51,7 +51,7 @@ export function getRecipeById(id) {
 
 export function getDiets() {
   return (dispatch) => {
-    axios.get(`http://localhost:3001/types`).then((response) => {
+    axios.get(`/types`).then((response) => {
       dispatch({ type: GET_DIETS, payload: response.data });
     });
   };
@@ -66,7 +66,7 @@ export function filterByDiet(payload) {
 
 export function createRecipe(payload) {
   return (dispatch) => {
-    axios.post(`http://localhost:3001/recipe`, payload);
+    axios.post(`/recipe`, payload);
     dispatch({ type: CREATE_RECIPE, payload });
   };
 }

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { Diet, Recipe } = require('../db');
+// const { API_KEY } = process.env;
 require('dotenv').config();
 
 const get_ApiID = async (id) => {
@@ -49,7 +50,7 @@ const get_Api = async () => {
   );
   // const resApi = await axios
   //   .get(
-  //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`,
+  //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
   //     { headers: { 'Accept-Encoding': 'gzip,deflate,compress' } }
   //   )
   //   .catch((error) => console.log(error));

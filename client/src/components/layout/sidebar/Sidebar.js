@@ -16,11 +16,9 @@ const Sidebar = ({ setPage }) => {
   const [order, setOrder] = useState('');
 
   let handleClick = (e) => {
-    e.preventDefault();
     dispatch(getRecipes());
     setPage(1);
     setOrder('');
-    window.location.reload(); // Si quiero recargar la página y limpiar todos los select, esta es una opción.
   };
 
   function handleFilterDiets(e) {
@@ -101,7 +99,7 @@ const Sidebar = ({ setPage }) => {
             )}
           </div>
           <button onClick={handleClick} className={styles.refresh}>
-            Reset Filters
+            Reset
           </button>
         </div>
       </div>

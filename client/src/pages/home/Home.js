@@ -14,7 +14,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [cardPerPages] = useState(9);
 
-  // PAGINADO
   const lastCard = page * cardPerPages;
   const firstCard = lastCard - cardPerPages;
   const cardsCurrent = allRecipes.slice(firstCard, lastCard);

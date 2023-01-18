@@ -6,7 +6,7 @@ import styles from './start.module.css';
 const Start = () => {
   return (
     <div className={styles.backgroundStart}>
-      <LogoTitle />
+      <LogoTitle title='HENRY FOOD' />
       <div className={styles.containerBtnStart}>
         <Link to='/home'>
           <button className={styles.buttonStart}>Start</button>

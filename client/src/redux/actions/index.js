@@ -84,8 +84,8 @@ export function filterHealthScore(payload) {
   };
 }
 
-export function loadingGeneral(e) {
+export function loadingGeneral(payload) {
   return (dispatch) => {
-    dispatch({ type: LOADING_GENERAL, payload: e });
+    dispatch({ type: LOADING_GENERAL, payload });
   };
 }

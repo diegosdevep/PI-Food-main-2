@@ -6,7 +6,6 @@ import { getRecipesByName } from '../../../redux/actions';
 const Search = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  // const selector = useSelector((state) => state.recipes);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
